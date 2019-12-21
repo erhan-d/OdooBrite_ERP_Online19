@@ -14,16 +14,16 @@ import org.openqa.selenium.support.PageFactory;
 //every page class will store webelements and methods related to that page
 public class LoginPage extends BasePage{
 
-    @FindBy(id = "prependedInput") //this line will initialize web element
+    @FindBy(id = "") //this line will initialize web element
     public WebElement userNameInput;
 
-    @FindBy(id = "prependedInput2")//without findby, web element will be null
+    @FindBy(id = "")//without findby, web element will be null
     public WebElement passwordInput;
 
-    @FindBy(id = "_submit")
+    @FindBy(id = "")
     public WebElement loginButton;
 
-    @FindBy(css = "[class='alert alert-error']")
+    @FindBy(css = "")
     public WebElement warningMessage;
 
     public LoginPage() {
