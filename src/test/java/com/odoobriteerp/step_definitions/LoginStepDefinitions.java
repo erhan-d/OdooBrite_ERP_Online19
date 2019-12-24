@@ -11,7 +11,7 @@ import org.junit.Assert;
 
 public class LoginStepDefinitions {
     // Write code here that turns the phrase above into concrete actions
-    LoginPage loginPage = new LoginPage();//created login page object
+    LoginPage loginPage = new LoginPage();//created login page object in order to use some methods
 
     @Given("user is on the login page")
     public void user_is_on_the_login_page() {
@@ -30,34 +30,52 @@ public class LoginStepDefinitions {
     }
 
     //any string in "word" will become a parameter for step definition method
-    //  And user verifies that "Dashboard" page subtitle is displayed
+    //  And user verifies that "Requests for Quotation" page subtitle is displayed
     @Then("user verifies that {string} page subtitle is displayed")
     public void user_verifies_that_page_subtitle_is_displayed(String string) {
-        loginPage.waitUntilLoaderMaskDisappear();
-        BrowserUtils.wait(2);
-        Assert.assertEquals(string, loginPage.getPageSubTitle());
+
+        Assert.assertEquals(string,loginPage.getPageSubTitle("Requests for Quotation"));
         System.out.println("Verifying page subtitle: " + string);
     }
 
-    @Then("user logs in as driver")
-    public void user_logs_in_as_driver() {
-        System.out.println("Login as driver");
+    @Then("user logs in as postmanager")
+    public void user_logs_in_as_posmanager() {
+        System.out.println("Login as post manager");
     }
 
-    @Then("user logs in as sales manager")
-    public void user_logs_in_as_sales_manager() {
-        System.out.println("Login as sales manager");
+    @Then("user logs in as events crm manager")
+    public void user_logs_in_as_events_crm_manager() {
+        System.out.println("Login as events crm manager");
     }
 
-    //Then user enters "storemanager85" username and "wrong" password
+    @Then("user logs in as events CRM manager")
+    public void user_logs_in_as_events_CRM_manager() {
+        System.out.println("Login as events CRM manager");
+    }
+
+    //Then user enters "posmanager45@info.com" username and "wrong" password
+    //OR  Then user enters "wrong username" username and "posmanager" password
     @Then("user enters {string} username and {string} password")
-    public void user_enters_username_and_password(String string, String string2) {
-        System.out.println("Login with "+string+" username and "+string2+" password.");
+    public void user_enters_username_and_password(String userName, String password) {
+        loginPage.login(userName,password);
+
+
     }
 
     @Then("user verifies that {string} message is displayed")
     public void user_verifies_that_message_is_displayed(String string) {
+        String warningMassage= loginPage.warningMessage.getText();
+        Assert.assertEquals(string,warningMassage);
         System.out.println("Verified that warning message is displayed: "+string);
     }
 
+
+    @Then("click sign in button")
+    public void click_sign_in_button() {
+        loginPage.SignInButton.click();
+    }
+    @Then("click {string} module")
+    public void click_module(String string) {
+        loginPage.navigateTo(string);
+    }
 }
