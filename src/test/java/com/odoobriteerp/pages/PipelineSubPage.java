@@ -7,6 +7,7 @@ public class PipelineSubPage {
     public static void main(String[] args) {
         System.out.println("hello word");
         //hello online 12
+        System.out.println("practicing from my IntellJ");
     }
 
 
