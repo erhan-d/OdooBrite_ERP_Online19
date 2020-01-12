@@ -25,9 +25,9 @@ Feature: Login
     Given user logs in as events CRM manager
     Then user is on the login page
     Then click sign in button
-    Then user enters "posmanager45@info.com" username and "posmanager" password
-    Then click "Purchases" module
-    And user verifies that "Requests for Quotation" page subtitle is displayed
+    Then user enters "eventscrmmanager58@info.com" username and "eventscrmmanager" password
+    Then click "CRM" module
+    And user verifies that "Pipeline" page subtitle is displayed
 
   @negative_test
   Scenario: Verify that warning message is displayed when password is not correct

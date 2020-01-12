@@ -8,7 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Function;
 
 public class BrowserUtils {
@@ -154,6 +156,25 @@ public class BrowserUtils {
         } catch (Throwable error) {
             error.printStackTrace();
         }
+    }
+
+    /**
+     * This method will convert/retrieve list of WebElements into list of string
+     *
+     * @param listOfWebElements
+     * @return list of strings
+     */
+    public static List<String> getListOfString(List<WebElement> listOfWebElements) {
+        List<String> listOfStrings = new ArrayList<>();
+        for (WebElement element : listOfWebElements) {
+            String value = element.getText().trim();
+            //if there is no text
+            //do not add this blank text into list
+            if (value.length() > 0) {
+                listOfStrings.add(value);
+            }
+        }
+        return listOfStrings;
     }
 }
 

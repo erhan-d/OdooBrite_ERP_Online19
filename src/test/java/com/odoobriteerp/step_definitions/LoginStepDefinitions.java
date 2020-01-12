@@ -33,9 +33,9 @@ public class LoginStepDefinitions {
     //  And user verifies that "Requests for Quotation" page subtitle is displayed
     @Then("user verifies that {string} page subtitle is displayed")
     public void user_verifies_that_page_subtitle_is_displayed(String string) {
-
-        Assert.assertEquals(string,loginPage.getPageSubTitle("Requests for Quotation"));
-        System.out.println("Verifying page subtitle: " + string);
+          BrowserUtils.wait(3);
+        Assert.assertEquals(string,loginPage.getPageSubTitle(string));
+        System.out.println("User verified page subtitle: " + string);
     }
 
     @Then("user logs in as postmanager")
@@ -58,6 +58,7 @@ public class LoginStepDefinitions {
     @Then("user enters {string} username and {string} password")
     public void user_enters_username_and_password(String userName, String password) {
         loginPage.login(userName,password);
+        System.out.println("User entered "+ userName+ " as a username and, "+ password+ " as a password");
 
 
     }
@@ -73,9 +74,12 @@ public class LoginStepDefinitions {
     @Then("click sign in button")
     public void click_sign_in_button() {
         loginPage.SignInButton.click();
+        System.out.println("User clicked sign in button");
     }
     @Then("click {string} module")
     public void click_module(String string) {
         loginPage.navigateTo(string);
+        BrowserUtils.wait(2);
+        System.out.println("User clicked " + string + " module");
     }
 }

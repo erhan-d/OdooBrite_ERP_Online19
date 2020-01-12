@@ -73,10 +73,11 @@ public class BasePage {
         }
 
         /**
-         * @return page subTitle name, for example: Requests for Quotation
+         * @return page subTitle name, for example: Pipeline
          */
         public String getPageSubTitle(String titleName) {
-            String titleNameLocator = "//*[normalize-space()='" + titleName + "' and @class='active']";
+
+            String titleNameLocator = "//li[contains(text(),'"+titleName+"')]";
             WebDriverWait wait = new WebDriverWait(Driver.get(), 10);
             WebElement moduleTitleName = Driver.get().findElement(By.xpath(titleNameLocator));
             wait.until(ExpectedConditions.visibilityOf(moduleTitleName));
