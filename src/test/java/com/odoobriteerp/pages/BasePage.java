@@ -12,8 +12,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-
 //everything that is in common among pages
 //can go here
 //for example top menu elements don't belong to specific page
@@ -21,10 +19,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 //so we can keep them here
 public class BasePage {
 
-    @FindBy(css = "div[class='loader-mask shown']")
-    public WebElement loaderMask;
 
-    @FindBy(css = "h1[class='oro-subtitle']")
+    @FindBy(xpath = "//div//div[2]/div/ol/li")
     public WebElement pageSubTitle;
 
     @FindBy(css = "#user-menu > a")

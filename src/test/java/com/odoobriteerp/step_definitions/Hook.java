@@ -12,7 +12,6 @@ public class Hook {
 
     @Before
     public void setup(){
-        System.out.println("##############################");
         System.out.println("Test setup!");
         Driver.get().manage().window().maximize();
     }
@@ -22,14 +21,15 @@ public class Hook {
         //if test failed - do this
         if(scenario.isFailed()){
             System.out.println("Test failed!");
+            //if test is failed, it is getting the image/screenshot of the failed test and shows on the report.
+            // If scenario passed, it will not take the screenshot.
             byte[] screenshot = ((TakesScreenshot)Driver.get()).getScreenshotAs(OutputType.BYTES);
             scenario.embed(screenshot, "image/png");
         }else{
             System.out.println("Cleanup!");
             System.out.println("Test completed!");
         }
-        System.out.println("##############################");
-        //after every test, we gonna close browser
+     //after every test, closes the window
         Driver.close();
     }
 }
