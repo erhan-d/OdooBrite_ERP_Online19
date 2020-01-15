@@ -1,41 +1,45 @@
 Feature: Login
-  As user, I want to be able to login into vytrack
+  As user, I want to be able to login into Odoo Brite ERP
   under different roles with username and password
 
-#  Any step that was implemented before, can be reused
-#  If test step has yellow background, tat means it doesn't have implementation yet
-#  click command/ctrl + option/alt + L to organize code, save like in java
-#  I had somewhere from 2 to 25 scenarios in every feature file
-#  By passing parameters/strings in "some word" we can reuse test steps
-#  In my project, I was trying to keep scenarios short
+  @postmanager
+  Scenario: Login as postmanager
+    Given user logs in as postmanager
+    Then user is on the login page
+    Then click sign in button
+    Then user enters "posmanager45@info.com" username and "posmanager" password
+    Then click "Purchases" module
+    And user verifies that "Requests for Quotation" page subtitle is displayed
 
-  @store_manager
-  Scenario: Login as store manager
-    Given user is on the login page
-    Then user logs in as store manager
-    And user verifies that "Dashboard" page subtitle is displayed
+  @eventscrmmanager
+  Scenario: Login as events crm manager
+    Given user logs in as events crm manager
+    Then user is on the login page
+    Then click sign in button
+    Then user enters "posmanager45@info.com" username and "posmanager" password
+    Then click "Purchases" module
+    And user verifies that "Requests for Quotation" page subtitle is displayed
 
-  @driver
-  Scenario: Login as driver
-    Given user is on the login page
-    Then user logs in as driver
-    And user verifies that "Dashboard" page subtitle is displayed
-
-  @sales_manager
-  Scenario: Login as sales manager
-    Given user is on the login page
-    Then user logs in as sales manager
-    And user verifies that "Dashboard" page subtitle is displayed
+  @eventsCRMmanager
+  Scenario: Login as events CRM manager
+    Given user logs in as events CRM manager
+    Then user is on the login page
+    Then click sign in button
+    Then user enters "posmanager45@info.com" username and "posmanager" password
+    Then click "Purchases" module
+    And user verifies that "Requests for Quotation" page subtitle is displayed
 
   @negative_test
   Scenario: Verify that warning message is displayed when password is not correct
     Given user is on the login page
-    Then user enters "storemanager85" username and "wrong" password
-    And user verifies that "Invalid user name or password." message is displayed
+    Then click sign in button
+    Then user enters "posmanager45@info.com" username and "wrongPassword" password
+    And user verifies that "Wrong login/password" message is displayed
 
   @negative_test
   Scenario: Verify that warning message is displayed when username is not correct
     Given user is on the login page
-    Then user enters "wrong_username" username and "UserUser123" password
-    And user verifies that "Invalid user name or password." message is displayed
+    Then click sign in button
+    Then user enters "wrong_username" username and "posmanager" password
+    And user verifies that "Wrong login/password" message is displayed
 

@@ -12,18 +12,21 @@ import org.openqa.selenium.support.PageFactory;
 //for each page of application
 //login page = login page class
 //every page class will store webelements and methods related to that page
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
-    @FindBy(id = "") //this line will initialize web element
+    @FindBy(xpath = "//b[contains(text(),'Sign in')]")
+    public WebElement SignInButton;
+
+    @FindBy(id = "login") //this line will initialize web element
     public WebElement userNameInput;
 
-    @FindBy(id = "")//without findby, web element will be null
+    @FindBy(id = "password")//without findby, web element will be null
     public WebElement passwordInput;
 
-    @FindBy(id = "")
+    @FindBy(className = "btn btn-primary")
     public WebElement loginButton;
 
-    @FindBy(css = "")
+    @FindBy(css = "[class='alert alert-danger']")
     public WebElement warningMessage;
 
     public LoginPage() {
@@ -37,13 +40,12 @@ public class LoginPage extends BasePage{
      * reusable login method
      * just call this method to login
      * provide username and password as parameters
+     *
      * @param userName
      * @param password
      */
-    public void login(String userName, String password){
+    public void login(String userName, String password) {
         userNameInput.sendKeys(userName);
-        //Keys.ENTER to replace login click
         passwordInput.sendKeys(password, Keys.ENTER);
     }
-
 }
